@@ -24,6 +24,9 @@ class Home extends CI_Controller
     {
         parent::__construct();
         $this->load->model('KaryawanModel');
+        if (!$this->session->userdata('isLogin')) {
+            redirect('login');
+        }
     }
 
     public function index()

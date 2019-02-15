@@ -15,8 +15,6 @@
   <?php echo link_tag('public/bower_components/Ionicons/css/ionicons.min.css');?>
   <!-- Theme style -->
   <?php echo link_tag('public/dist/css/AdminLTE.min.css');?>
-  <!-- iCheck -->
-  <?php echo link_tag('public/plugins/iCheck/square/blue.css');?>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,19 +29,19 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
+    <a href="<?php echo base_url(); ?>"><b>Admin</b>LTE</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="../../index2.html" method="post">
+    <form>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input name="username" type="text" class="form-control" placeholder="username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input name="password" type="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -66,14 +64,29 @@
 <script src="<?php echo base_url('public/bower_components/jquery/dist/jquery.min.js');?>"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo base_url('public/bower_components/bootstrap/dist/js/bootstrap.min.js');?>"></script>
-<!-- iCheck -->
-<script src="<?php echo base_url('public/plugins/iCheck/icheck.min.js');?>"></script>
 <script>
   $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
+    $("form").submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            "type": 'POST',
+            "url": 'login/verifyMe',
+            "data": $(this).serializeArray(),
+            "dataType": 'json',
+            "success": function (result, textStatus, jqXHR) {
+                if (result.success === true) {
+                    window.location.href='home';
+                }else {
+                    alert('logi gagal\n' + result.message);
+                }
+            },
+            "error": function(jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+        });
     });
   });
 </script>

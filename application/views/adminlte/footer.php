@@ -221,8 +221,31 @@
 <script src="<?php echo base_url('public/dist/script/' . $script . '.js'); ?>"></script>
 <script>
   $(document).ready(function () {
-    $('.sidebar-menu').tree()
+    $('.sidebar-menu').tree();
+    
+
   })
+  
+  function logMeOut() {
+    $.ajax({
+        "type": 'POST',
+        "url": 'login/never',
+        "dataType": 'json',
+        "success": function (result, textStatus, jqXHR) {
+            if (result.success === true) {
+                window.location.href='login';
+            }else {
+                alert('logi gagal\n' + result.message);
+            }
+        },
+        "error": function(jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+            console.log(jqXHR);
+            console.log(textStatus);
+            console.log(errorThrown);
+        }
+    });
+  }
 </script>
 </body>
 </html>
