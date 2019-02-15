@@ -14,5 +14,6 @@ Git:
 Colaborator:
 1. 
 2.
-3.
-4.choirul fatoni
+3. Edwin Tri Hadtanto
+4. Choirul fatoni
+
