@@ -222,8 +222,6 @@
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree();
-    
-
   })
   
   function logMeOut() {
@@ -232,11 +230,7 @@
         "url": 'login/never',
         "dataType": 'json',
         "success": function (result, textStatus, jqXHR) {
-            if (result.success === true) {
-                window.location.href='login';
-            }else {
-                alert('logi gagal\n' + result.message);
-            }
+          window.location.href='login';
         },
         "error": function(jqXHR, textStatus, errorThrown) {
             alert(errorThrown);

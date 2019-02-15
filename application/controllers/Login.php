@@ -21,9 +21,6 @@ class Login extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        // if ($this->session->userdata('isLogin')) {
-        //     redirect('home');
-        // }
     }
 
 	public function index()
@@ -34,10 +31,13 @@ class Login extends CI_Controller {
     public function verifyMe()
     {
         if ($this->input->post('username')=='admin' && $this->input->post('password')=='123') {
-            $this->session->set_userdata([
-                'username' => 'Administrator',
-                'isLogin' => true
-            ]);
+            $this->session->set_userdata(
+                [
+                    'username' => 'Administrator',
+                    'isLogin' => true,
+                    'akses' => 1
+                ]
+            );
 
             $output['success'] = true;
             $output['message'] = 'Login sukses';
@@ -53,8 +53,7 @@ class Login extends CI_Controller {
 
     public function never()
     {
-        $this->session->unset_userdata("username");
-        $this->session->unset_userdata("isLogin");
+        $this->session->sess_destroy();
         header('Content-Type: application/json');
         echo json_encode(['success' => true]);
     }
