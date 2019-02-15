@@ -18,7 +18,7 @@ $(document).ready(function () {
         "columnDefs": [
             {
                 "targets": [0], 
-                "orderable": false, 
+                "visible": false, 
             },
             {
                 "targets": -1,
@@ -47,6 +47,7 @@ $(document).ready(function () {
 
     // Btn Create [+]
     $('#btnCreate').on('click', function(){
+        $('.formEditorModal form')[0].reset();
         $('.btn_save').html('<i class="fa fa-save"></i> Save');
         $('.formEditorModal').modal();
         console.log($('.btn_save').html());
@@ -59,14 +60,15 @@ $(document).ready(function () {
         pKey = data[0];
 
         /* Set Edit Form Value */
-        $("input[name=nama_lengkap]").val(data[1]);
-        $("input[name=email]").val(data[2]);
-        $("input[name=no_hp]").val(data[3]);
+        $("input[name=nama_lengkap]").val(data[2]);
+        $("input[name=email]").val(data[3]);
+        $("input[name=no_hp]").val(data[4]);
         $('.btn_save').html('<i class="fa fa-save"></i> Update');
         $('.modal-title').html('Form Edit');
         $('.formEditorModal').modal();
-        console.log($('.btn_save').html());
     });
+
+
 
     // Btn Save
     $('.btn_save').on('click', function(){

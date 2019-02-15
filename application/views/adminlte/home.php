@@ -32,10 +32,12 @@
             <table id="table" class="table table-striped table-bordered table-hover dt-responsive wrap" cellspacing="0" width="100%">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>NO</th>
                         <th>NAMA</th>
                         <th>EMAIL</th>
                         <th>NO HP</th>
+                        <th>ACTION</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

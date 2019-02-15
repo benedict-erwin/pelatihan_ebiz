@@ -40,6 +40,7 @@ class Home extends CI_Controller
         foreach ($list as $karyawan) {
             $no++;
             $row = array();
+            $row[] = $karyawan->id_karyawan;
             $row[] = $no;
             $row[] = $karyawan->nama_lengkap;
             $row[] = $karyawan->email;

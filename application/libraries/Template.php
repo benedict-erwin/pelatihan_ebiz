@@ -18,6 +18,11 @@ class Template
         $this->CI->load->view($file_view, $data);
         $this->CI->load->view($file_footer, ['script' => $view]);
     }
+
+    public function login()
+    {
+        $this->CI->load->view('adminlte/login');
+    }
 }
 
 ?>
