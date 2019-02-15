@@ -12,7 +12,7 @@ Git:
 8. [Kirim Perubahan] - git push
 
 Colaborator:
-1. 
+1. sigit
 2.
 3.
 4.
