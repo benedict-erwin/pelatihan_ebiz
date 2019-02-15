@@ -13,6 +13,6 @@ Git:
 
 Colaborator:
 1. 
-2. Reski Alfan
+2. Reski Alfan D 
 3. Edwin Tri Hadtanto
 4.
