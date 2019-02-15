@@ -9,7 +9,8 @@ Git:
 5. [Update Repository] - git pull
 6. [Add Perubahan] - git add .
 7. [Commit Perubahan] - git commit -am "Pesan perubahan"
-8. [Kirim Perubahan] - git push
+8. [Cek Update Terbaru] - git pull
+9. [Kirim Perubahan] - git push
 
 Colaborator:
 1. sigit
