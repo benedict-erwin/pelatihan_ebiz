@@ -13,6 +13,6 @@ Git:
 
 Colaborator:
 1. 
-2.
+2. Reski Alfan
 3.
 4.
