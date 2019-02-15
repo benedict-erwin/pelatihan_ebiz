@@ -52,18 +52,54 @@ class KaryawanModel extends CI_Model
     function insertTable($data)
     {
         $this->db->insert($this->table, $data);
+        $cek = $this->db->error();
+        if($cek['code']!==0){
+            return [
+                'success' => false,
+                'message' => $cek['message']
+            ];
+        }else{
+            return [
+                'success' => true,
+                'message' => $this->db->insert_id()
+            ];
+        }
     }
 
     function updateTable($id, $data)
     {
         $this->db->where($this->primaryKey, $id);
         $this->db->update($this->table, $data);
+        $cek = $this->db->error();
+        if($cek['code']!==0){
+            return [
+                'success' => false,
+                'message' => $cek['message']
+            ];
+        }else{
+            return [
+                'success' => true,
+                'message' => 'success'
+            ];
+        }
     }
 
     function deleteTable($id)
     {
         $this->db->where($this->primaryKey, $id);
         $this->db->delete($this->table);
+        $cek = $this->db->error();
+        if($cek['code']!==0){
+            return [
+                'success' => false,
+                'message' => $cek['message']
+            ];
+        }else{
+            return [
+                'success' => true,
+                'message' => 'success'
+            ];
+        }
     }
 
     function countWhere($col, $value)

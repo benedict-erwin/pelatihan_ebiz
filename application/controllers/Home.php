@@ -62,12 +62,10 @@ class Home extends CI_Controller
 
     public function create()
     {
-        $output = ['success' => false];
-        $this->KaryawanModel->insertTable($this->input->post());
-        if ($this->db->error()) {
-            $output['success'] = true;
-        }
-
+        $msg = $this->KaryawanModel->insertTable($this->input->post());
+        $output['success'] = $msg['success'];
+        $output['message'] = $msg['message'];
+        
         //output to json format
         header('Content-Type: application/json');
         echo json_encode($output);
@@ -75,12 +73,19 @@ class Home extends CI_Controller
 
     public function update()
     {
-        $output = ['success' => false];
-        $this->KaryawanModel->updateTable($this->input->post('id_karyawan'), $this->input->post());
-        if ($this->db->error()) {
-            $output['success'] = true;
-        }
+        $msg = $this->KaryawanModel->updateTable($this->input->post('id_karyawan'), $this->input->post());
+        $output['success'] = $msg['success'];
+        $output['message'] = $msg['message'];
+        //output to json format
+        header('Content-Type: application/json');
+        echo json_encode($output);
+    }
 
+    public function delete()
+    {
+        $msg = $this->KaryawanModel->deleteTable($this->input->post('id_karyawan'));
+        $output['success'] = $msg['success'];
+        $output['message'] = $msg['message'];
         //output to json format
         header('Content-Type: application/json');
         echo json_encode($output);

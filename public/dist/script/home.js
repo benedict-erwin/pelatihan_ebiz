@@ -54,7 +54,6 @@ $(document).ready(function () {
     });
 
     // Btn Edit
-    /* Button Edit Action */
     $(tbl).on('click', '.btEdit', function () {
         let data = (table.row($(this).closest('tr')).data() === undefined) ? table.row($(this).closest('li')).data() : table.row($(this).closest('tr')).data();
         pKey = data[0];
@@ -68,7 +67,34 @@ $(document).ready(function () {
         $('.formEditorModal').modal();
     });
 
-
+    // Btn Delete [-]
+    $(tbl).on('click', '.btDelete', function () {
+        let data = (table.row($(this).closest('tr')).data() === undefined) ? table.row($(this).closest('li')).data() : table.row($(this).closest('tr')).data();
+        pKey = data[0];
+        if (confirm('Are you sure you want to save this thing into the database?')) {
+            let postData = {'id_karyawan': pKey};
+            $.ajax({
+                "type": 'POST',
+                "url": 'home/delete',
+                "data": postData,
+                "dataType": 'json',
+                "success": function (result, textStatus, jqXHR) {
+                    if (result.success === true) {
+                        table.ajax.reload(null, false);
+                        alert('deleted');
+                    }else {
+                        alert('penyimpanan gagal\n' + result.message);
+                    }
+                },
+                "error": function(jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                    console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                }
+            });
+        }
+    });
 
     // Btn Save
     $('.btn_save').on('click', function(){
@@ -95,7 +121,7 @@ $(document).ready(function () {
                     table.ajax.reload(null, false);
                     alert('data tersimpan');
                 }else {
-                    alert('penyimpanan gagal');
+                    alert('penyimpanan gagal\n' + result.message);
                 }
                 $('.formEditorModal').modal('hide');
                 $('.btn_save').button('reset');
@@ -105,6 +131,8 @@ $(document).ready(function () {
                 $('.btn_save').button('reset');
                 $(this.element).prop('disabled', false);
                 alert(errorThrown);
+                $('.formEditorModal').modal('hide');
+                $('.btn_save').button('reset');
                 console.log(jqXHR);
                 console.log(textStatus);
                 console.log(errorThrown);
