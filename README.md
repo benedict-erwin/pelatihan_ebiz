@@ -13,7 +13,7 @@ Git:
 
 Colaborator:
 1. sigit
-2.
+2. Reski Alfan D P
 3. Edwin Tri Hadtanto
 4. Choirul fatoni
 
